@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveJoystick;
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.cameraserver.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,6 +41,10 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new DriveJoystick());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    // Creates a timer object for further use
+    Timer timestamp = new Timer();
+    // Starts the camera feed
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
