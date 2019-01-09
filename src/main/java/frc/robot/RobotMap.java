@@ -15,10 +15,10 @@ package frc.robot;
  */
 public class RobotMap {
   // Drivetrain
-  public static int DRIVETRAIN_FRONT_LEFT_MOTOR = ?;
-  public static int DRIVETRAIN_REAR_LEFT_MOTOR = ?;
+  public static int DRIVETRAIN_FRONT_LEFT_MOTOR  = ?;
+  public static int DRIVETRAIN_REAR_LEFT_MOTOR   = ?;
   public static int DRIVETRAIN_FRONT_RIGHT_MOTOR = ?;
-  public static int DRIVETRAIN_REAR_RIGHT_MOTOR = ?;
+  public static int DRIVETRAIN_REAR_RIGHT_MOTOR  = ?;
 
   // Joysticks
   public static int DRIVER_JOYSTICK = 0;
