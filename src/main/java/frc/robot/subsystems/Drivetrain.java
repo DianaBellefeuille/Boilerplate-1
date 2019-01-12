@@ -8,8 +8,11 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import frc.robot.RobotMap;
+import frc.robot.commands.DriveJoystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -32,10 +35,27 @@ public class Drivetrain extends Subsystem {
   public static DifferentialDrive diffDrive = new DifferentialDrive(frontLeft, frontRight);
 
   
+  // Setup the default motor controller setup
   
+  
+  public static void initControllerSetup() {
+    // This method will setup the default settings of the motor controllers.
+  
+    // Set the front motors to be the followers of the rear motors
+    frontLeft.set(ControlMode.Follower, RobotMap.DRIVETRAIN_REAR_LEFT_MOTOR);
+    frontRight.set(ControlMode.Follower, RobotMap.DRIVETRAIN_REAR_RIGHT_MOTOR);
+
+    // Set the neutral output mode to Brake/Coast/
+    rearLeft.setNeutralMode(NeutralMode.Brake);
+    rearRight.setNeutralMode(NeutralMode.Brake);
+
+    // Disable the motor-safety
+    diffDrive.setSafetyEnabled(false);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new DriveJoystick());
   }
 }
