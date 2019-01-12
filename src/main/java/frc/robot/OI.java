@@ -17,7 +17,8 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
 
   public static Joystick driverJoystick = new Joystick(RobotMap.DRIVER_JOYSTICK);
-  Joystick operatorJoystick = new Joystick(RobotMap.OPERATOR_JOYSTICK);
+  public static Joystick operatorJoystick = new Joystick(RobotMap.OPERATOR_JOYSTICK);
+  
   // Button button = new JoystickButton(stick, buttonNumber);
 
   // There are a few additional built in buttons you can use. Additionally,
