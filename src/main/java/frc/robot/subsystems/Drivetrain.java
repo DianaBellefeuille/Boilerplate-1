@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import frc.robot.RobotMap;
@@ -15,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
- * Add your docs here.
+ * Creates the drivetrain
  */
 public class Drivetrain extends Subsystem {
 
@@ -31,7 +33,18 @@ public class Drivetrain extends Subsystem {
   public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, rearRight);
   public static DifferentialDrive diffDrive = new DifferentialDrive(frontLeft, frontRight);
 
-  
+/**
+ * This method will set up the default settings of the motor controller  
+ */
+
+  public static void initDefaultSetup() {
+   //Set the front motors to be the followers of the back motors
+   frontLeft.set(ControlMode.Follower, RobotMap.DRIVETRAIN_REAR_LEFT_MOTOR);
+   frontRight.set(ControlMode.Follower, RobotMap.DRIVETRAIN_REAR_RIGHT_MOTOR);
+   rearLeft.setNeutralMode(NeutralMode.Brake);
+   rearRight.setNeutralMode(NeutralMode.Brake);
+   diffDrive.setSafetyEnabled(false);
+  }
   
   @Override
   public void initDefaultCommand() {
