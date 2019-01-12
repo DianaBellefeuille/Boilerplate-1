@@ -36,7 +36,6 @@ public class Drivetrain extends Subsystem {
 /**
  * This method will set up the default settings of the motor controller  
  */
-
   public static void initDefaultSetup() {
    //Set the front motors to be the followers of the back motors
    frontLeft.set(ControlMode.Follower, RobotMap.DRIVETRAIN_REAR_LEFT_MOTOR);
@@ -44,7 +43,7 @@ public class Drivetrain extends Subsystem {
    // Sets the neutral mode to brake
    rearLeft.setNeutralMode(NeutralMode.Brake);
    rearRight.setNeutralMode(NeutralMode.Brake);
-   
+
    diffDrive.setSafetyEnabled(false);
   }
   
