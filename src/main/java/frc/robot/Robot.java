@@ -16,7 +16,6 @@ import frc.robot.commands.DriveJoystick;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.cameraserver.*;
-import frc.robot.subsystems.Drivetrain.initDefaultSetup;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,7 +27,6 @@ import frc.robot.subsystems.Drivetrain.initDefaultSetup;
 public class Robot extends TimedRobot {
   public static Drivetrain m_subsystem = new Drivetrain();
   public static OI m_oi;
-  public = new initDefaultSetup();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -48,7 +46,7 @@ public class Robot extends TimedRobot {
     // Starts the camera feed
     CameraServer.getInstance().startAutomaticCapture();
     // Create the slave motors
-    
+    Drivetrain.initDefaultSetup();
 
   }
 
