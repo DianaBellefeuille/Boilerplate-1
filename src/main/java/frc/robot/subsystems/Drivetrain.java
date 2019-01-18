@@ -23,14 +23,16 @@ public class Drivetrain extends Subsystem {
 
   // Map the CIM motors to the TalonSRX's
   public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_LEFT_MOTOR);
+  public static WPI_TalonSRX midLeft = new WPI_TalonSRX(RobotMap.DRIVETRAIN_MIDDLE_LEFT_MOTOR);
   public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(RobotMap.DRIVETRAIN_REAR_LEFT_MOTOR);
   public static WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_RIGHT_MOTOR);
+  public static WPI_TalonSRX midRight = new WPI_TalonSRX(RobotMap.DRIVETRAIN_MIDDLE_LEFT_MOTOR);
   public static WPI_TalonSRX rearRight = new WPI_TalonSRX(RobotMap.DRIVETRAIN_REAR_RIGHT_MOTOR);
 
 
   // Add the motors to the speed controller groups and create the differential drivetrain
-  public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeft, rearLeft);
-  public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, rearRight);
+  public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeft, midLeft, rearLeft);
+  public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, midRight, rearRight);
   public static DifferentialDrive diffDrive = new DifferentialDrive(frontLeft, frontRight);
 
 /**
