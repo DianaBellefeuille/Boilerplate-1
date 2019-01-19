@@ -130,7 +130,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    myDrive.tankDrive(leftStick.getY(),  rightStick.getY());
+    diffDrive.arcadedrive(DriverJoystick.getY(), DriverJoystick.getX())
   }
 
   /**
