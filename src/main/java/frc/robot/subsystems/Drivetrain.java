@@ -36,7 +36,7 @@ public class Drivetrain extends Subsystem {
   // Add the motors to the speed controller groups and create the differential drivetrain
   public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeft, midLeft, rearLeft);
   public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, midRight, rearRight);
-  public static DifferentialDrive diffDrive = new DifferentialDrive(frontLeft, frontRight);
+  public static DifferentialDrive diffDrive = new DifferentialDrive(leftDrive, rightDrive);
 
 /**
  * This method will set up the default settings of the motor controller  
