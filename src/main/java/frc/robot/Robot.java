@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+// import edu.wpi.first.wpilibj.CameraServer;
+// import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -41,13 +43,13 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new DriveJoystick());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+
     // Creates a timer object for further use
     //    Timer timestamp = new Timer();
     // Starts the camera feed
     //    CameraServer.getInstance().startAutomaticCapture();
     // Create the slave motors
     Drivetrain.initDefaultSetup();
-
   }
 
   /**

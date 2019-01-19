@@ -21,7 +21,7 @@ public class RobotMap {
   public static int DRIVETRAIN_FRONT_RIGHT_MOTOR = 15;
   public static int DRIVETRAIN_MIDDLE_RIGHT_MOTOR = 14;
   public static int DRIVETRAIN_REAR_RIGHT_MOTOR  = 13;
-
+  
   // Joysticks
   public static int DRIVER_JOYSTICK   = 0;
   public static int OPERATOR_JOYSTICK = 1;
