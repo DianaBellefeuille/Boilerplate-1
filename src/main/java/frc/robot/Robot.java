@@ -126,10 +126,10 @@ public class Robot extends TimedRobot {
   /*
    * This function is called periodically during operator control.
    */
-  @Override
+  // @Override
   public void teleopPeriodic() {
     Drivetrain.diffDrive.arcadeDrive(OI.driverJoystick.getY(),  OI.driverJoystick.getX());
-    DriveJoystick.start();
+    // DriveJoystick.start();
   }
   /*
    * This function is called periodically during test mode.

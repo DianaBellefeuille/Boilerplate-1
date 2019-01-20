@@ -9,6 +9,7 @@ package frc.robot;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotBase;
 
 /**
  * This class is the glue that binds the controls on the physical operator
