@@ -32,4 +32,5 @@ public class RobotMap {
   // Pneumatics port constants
   public static int HIGH_GEAR_SOLENOID = 0;
   public static int LOW_GEAR_SOLENOID = 1;
+  public static int PCM = 22;
 }

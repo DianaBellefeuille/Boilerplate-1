@@ -30,6 +30,7 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   public static Drivetrain m_subsystem = new Drivetrain();
   public static OI m_oi;
+  public static Command DriveJoystick;
 
   
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -128,6 +129,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Drivetrain.diffDrive.arcadeDrive(OI.driverJoystick.getY(),  OI.driverJoystick.getX());
+    DriveJoystick.start();
   }
   /*
    * This function is called periodically during test mode.
