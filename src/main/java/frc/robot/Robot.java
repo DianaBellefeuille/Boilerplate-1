@@ -12,9 +12,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveJoystick;
+// import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 // import edu.wpi.first.wpilibj.Timer;
 // import edu.wpi.first.cameraserver.*;
@@ -26,13 +26,14 @@ import frc.robot.subsystems.Drivetrain;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
   public static Drivetrain m_subsystem = new Drivetrain();
   public static OI m_oi;
 
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+  
+  // SendableChooser<Command> m_chooser = new SendableChooser<>();
+ 
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -40,14 +41,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new DriveJoystick());
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
-
     // Creates a timer object for further use
-    //    Timer timestamp = new Timer();
+    // Timer timestamp = new Timer();
     // Starts the camera feed
-    //    CameraServer.getInstance().startAutomaticCapture();
+    // CameraServer.getInstance().startAutomaticCapture();
     // Create the slave motors
     Drivetrain.initDefaultSetup();
   }
@@ -78,7 +75,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  /**
+  /*
    * This autonomous (along with the chooser code above) shows how to select
    * between different autonomous modes using the dashboard. The sendable
    * chooser code works with the Java SmartDashboard. If you prefer the
@@ -89,30 +86,30 @@ public class Robot extends TimedRobot {
    * chooser code above (like the commented example) or additional comparisons
    * to the switch structure below with additional strings & commands.
    */
-  @Override
-  public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+  // @Override
+  // public void autonomousInit() {
+  //   m_autonomousCommand = m_chooser.getSelected();
 
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
+  //   /*
+  //    * String autoSelected = SmartDashboard.getString("Auto Selector",
+  //    * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+  //    * = new MyAutoCommand(); break; case "Default Auto": default:
+  //    * autonomousCommand = new ExampleCommand(); break; }
+  //    */
 
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
-  }
+  //   // schedule the autonomous command (example)
+  //   if (m_autonomousCommand != null) {
+  //     m_autonomousCommand.start();
+  //   }
+  // }
 
-  /**
+  /*
    * This function is called periodically during autonomous.
    */
-  @Override
-  public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
-  }
+  // @Override
+  // public void autonomousPeriodic() {
+  //   Scheduler.getInstance().run();
+  // }
 
   @Override
   public void teleopInit() {
@@ -120,20 +117,19 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+    // if (m_autonomousCommand != null) {
+    //   m_autonomousCommand.cancel();
+    // }
   }
 
-  /**
+  /*
    * This function is called periodically during operator control.
    */
   @Override
   public void teleopPeriodic() {
-    diffDrive.arcadedrive(DriverJoystick.getY(), DriverJoystick.getX())
+    Drivetrain.diffDrive.arcadeDrive(OI.driverJoystick.getY(),  OI.driverJoystick.getX());
   }
-
-  /**
+  /*
    * This function is called periodically during test mode.
    */
   @Override
