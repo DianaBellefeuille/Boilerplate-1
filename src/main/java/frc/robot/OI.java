@@ -10,6 +10,8 @@ package frc.robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.buttons.*;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -20,6 +22,10 @@ public class OI {
   public static Joystick driverJoystick = new Joystick(RobotMap.DRIVER_JOYSTICK);
   public static Joystick operatorJoystick = new Joystick(RobotMap.OPERATOR_JOYSTICK);
   
+  //Boolean buttonValue;
+
+  //buttonValue = driverJoystick.getrawbutton(0);
+
   // Button button = new JoystickButton(stick, buttonNumber);
 
   // There are a few additional built in buttons you can use. Additionally,

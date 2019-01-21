@@ -15,12 +15,12 @@ package frc.robot;
  */
 public class RobotMap {
   // Drivetrain
-  public static int DRIVETRAIN_REAR_LEFT_MOTOR  = 10;
-  public static int DRIVETRAIN_MIDDLE_LEFT_MOTOR = 1;
-  public static int DRIVETRAIN_FRONT_LEFT_MOTOR   = 2;
-  public static int DRIVETRAIN_REAR_RIGHT_MOTOR = 15;
-  public static int DRIVETRAIN_MIDDLE_RIGHT_MOTOR = 14;
-  public static int DRIVETRAIN_FRONT_RIGHT_MOTOR  = 13;
+  public static int kLeftLeader = 10;
+  public static int kLeftFollowerA = 1;
+  public static int kLeftFollowerB   = 2;
+  public static int kRightLeader = 15;
+  public static int kRightFollowerA = 14;
+  public static int kRightFollowerB  = 13;
 
   // Joysticks
   public static int DRIVER_JOYSTICK   = 0;
