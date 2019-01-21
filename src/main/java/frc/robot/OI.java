@@ -10,8 +10,7 @@ package frc.robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotBase;
-import edu.wpi.first.wpilibj.buttons.*;
-
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,11 +21,11 @@ public class OI {
   public static Joystick driverJoystick = new Joystick(RobotMap.DRIVER_JOYSTICK);
   public static Joystick operatorJoystick = new Joystick(RobotMap.OPERATOR_JOYSTICK);
   
-  //Boolean buttonValue;
+  // Boolean buttonValue;
 
-  //buttonValue = driverJoystick.getrawbutton(0);
+  // buttonValue = driverJoystick.getrawbutton(0);
 
-  // Button button = new JoystickButton(stick, buttonNumber);
+  JoystickButton mShift = new JoystickButton(driverJoystick, 1);
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
@@ -47,4 +46,8 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-}
+// }
+
+public OI(){
+//  mShift.whenPressed();
+}}

@@ -12,14 +12,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.commands.DriveJoystick;
+// import frc.robot.commands.Drivetrain.DriveJoystick;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 // import edu.wpi.first.wpilibj.Timer;
 // import edu.wpi.first.cameraserver.*;
 
-/**
+/*
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
   
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
  
-  /**
+  /*
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
@@ -128,12 +128,12 @@ public class Robot extends TimedRobot {
    */
   // @Override
   public void teleopPeriodic() {
-    Drivetrain.diffDrive.arcadeDrive(OI.driverJoystick.getY(),  OI.driverJoystick.getX());
+    // Drivetrain.diffDrive.arcadeDrive(-OI.driverJoystick.getY(),  -OI.driverJoystick.getX());
     // DriveJoystick.start();
   }
-  /*
-   * This function is called periodically during test mode.
-   */
+
+   // This function is called periodically during test mode.
+
   @Override
   public void testPeriodic() {
   }

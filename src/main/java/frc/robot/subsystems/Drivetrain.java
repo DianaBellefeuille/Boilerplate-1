@@ -12,15 +12,14 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveJoystick;
+import frc.robot.commands.Drivetrain.DriveJoystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
-/*
- * Creates the drivetrain
- */
+
+// Creates the drivetrain
 public class Drivetrain extends Subsystem {
 
   // Map the CIM motors to the TalonSRX's
@@ -37,31 +36,31 @@ public class Drivetrain extends Subsystem {
   public static DifferentialDrive diffDrive = new DifferentialDrive(leftDrive, rightDrive);
 
   // Map the pneumatics for the drivetrain
-  //public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.PCM, RobotMap.HIGH_GEAR_SOLENOID, RobotMap.LOW_GEAR_SOLENOID);
+  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.PCM, RobotMap.HIGH_GEAR_SOLENOID, RobotMap.LOW_GEAR_SOLENOID);
 
  // This method will set up the default settings of the motor controller  
  
   public static void initDefaultSetup() {
-   // Set the front and middle motors to be the followers of the rear motors
-   mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeader);
-   mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeader);
-   mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeader);
-   mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeader);
+    // Set the front and middle motors to be the followers of the rear motors
+    mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeader);
+    mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeader);
+    mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeader);
+    mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeader);
 
-   // Set brake mode
+    // Set brake mode
 
-   mLeftLeader.setNeutralMode(NeutralMode.Coast);
-   mLeftFollowerA.setNeutralMode(NeutralMode.Coast);
-   mLeftFollowerB.setNeutralMode(NeutralMode.Coast);
-   mRightLeader.setNeutralMode(NeutralMode.Coast);
-   mRightFollowerA.setNeutralMode(NeutralMode.Coast);
-   mRightFollowerB.setNeutralMode(NeutralMode.Coast);
-   
-   diffDrive.setSafetyEnabled(false);
+    mLeftLeader.setNeutralMode(NeutralMode.Coast);
+    mLeftFollowerA.setNeutralMode(NeutralMode.Coast);
+    mLeftFollowerB.setNeutralMode(NeutralMode.Coast);
+    mRightLeader.setNeutralMode(NeutralMode.Coast);
+    mRightFollowerA.setNeutralMode(NeutralMode.Coast);
+    mRightFollowerB.setNeutralMode(NeutralMode.Coast);
 
-  // Set the solenoids
-  //m_Shifter.set(DoubleSolenoid.Value.kReverse);
-}
+    diffDrive.setSafetyEnabled(false);
+
+    // Set the solenoids
+    m_Shifter.set(DoubleSolenoid.Value.kReverse);
+  }
 
   @Override
   public void initDefaultCommand() {
