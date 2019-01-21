@@ -13,14 +13,12 @@ public class Shift extends Command{
   public Shift() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.m_subsystem);
-        DriverStation.reportError("Constructed Shift command", true);
       }
     
       // Called just before this Command runs the first time
       @Override
       protected void initialize() {
         mIsFinished = false;
-        DriverStation.reportError("Command called", true);
       }
     
       // Called repeatedly when this Command is scheduled to run

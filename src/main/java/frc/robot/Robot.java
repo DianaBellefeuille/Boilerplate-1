@@ -48,7 +48,6 @@ public class Robot extends TimedRobot {
     // CameraServer.getInstance().startAutomaticCapture();
     // Create the slave motors
     Drivetrain.initDefaultSetup();
-    DriverStation.reportError("Robot turned on:", true);
   }
 
   /**
@@ -129,6 +128,7 @@ public class Robot extends TimedRobot {
    */
   // @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
     // DriveJoystick.start();
   }
 
