@@ -17,6 +17,7 @@ import frc.robot.subsystems.Drivetrain;
  * An example command.  You can replace me with your own command.
  */
 public class DriveJoystick extends Command {
+
   public DriveJoystick() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_subsystem);

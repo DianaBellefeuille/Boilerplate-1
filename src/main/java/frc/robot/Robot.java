@@ -9,6 +9,7 @@ package frc.robot;
 
 // import edu.wpi.first.wpilibj.CameraServer;
 // import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -32,7 +33,6 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static Command DriveJoystick;
 
-  
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
  
   /*
@@ -48,6 +48,7 @@ public class Robot extends TimedRobot {
     // CameraServer.getInstance().startAutomaticCapture();
     // Create the slave motors
     Drivetrain.initDefaultSetup();
+    DriverStation.reportError("Robot turned on:", true);
   }
 
   /**
@@ -128,7 +129,6 @@ public class Robot extends TimedRobot {
    */
   // @Override
   public void teleopPeriodic() {
-    // Drivetrain.diffDrive.arcadeDrive(-OI.driverJoystick.getY(),  -OI.driverJoystick.getX());
     // DriveJoystick.start();
   }
 
