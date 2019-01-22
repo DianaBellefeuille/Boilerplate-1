@@ -9,10 +9,10 @@ package frc.robot;
 
 import frc.robot.RobotMap;
 import frc.robot.commands.Drivetrain.Shift;
+import frc.robot.commands.Manipulators.CargoIntake;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.DriverStation;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -48,9 +48,7 @@ public class OI {
 // }
 
   public OI(){
-    DriverStation.reportError("OI constructor", true);
     mShift.whenReleased(new Shift());
-    mShift2.whenPressed(new Shift());
-
+    mShift2.whileHeld(new CargoIntake());
   }
 }

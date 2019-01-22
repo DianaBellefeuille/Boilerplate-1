@@ -1,15 +1,15 @@
-package frc.robot.commands.Drivetrain;
+package frc.robot.commands.Manipulators;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.Robot;
-import frc.robot.subsystems.Drivetrain;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import frc.robot.RobotMap;
 
-public class Shift extends Command{
+public class CargoIntake extends Command{
 
-  public boolean mIsFinished = true;
+  public static WPI_TalonSRX mCargoIntakeMotor = new WPI_TalonSRX(RobotMap.kCargoIntakeMotor);
   
-  public Shift() {
+  public CargoIntake() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.m_subsystem);
       }
@@ -17,24 +17,18 @@ public class Shift extends Command{
       // Called just before this Command runs the first time
       @Override
       protected void initialize() {
-        mIsFinished = false;
       }
     
       // Called repeatedly when this Command is scheduled to run
       @Override
       protected void execute() {
-        if (Drivetrain.m_Shifter.get() == DoubleSolenoid.Value.kForward) {
-            Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kReverse);
-        } else {
-          Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kForward);
-        }
-        mIsFinished = true;
+        mCargoIntakeMotor.set(.5);
       }
     
       // Make this return true when this Command no longer needs to run execute()
       @Override
       protected boolean isFinished() {
-        return mIsFinished;
+        return false;
       }
     
       // Called once after isFinished returns true
