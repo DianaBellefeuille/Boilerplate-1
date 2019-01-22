@@ -21,8 +21,8 @@ public class RobotMap {
   public static int kRightLeader = 15;
   public static int kRightFollowerA = 14;
   public static int kRightFollowerB  = 13;
-  
-  public static int kCargoIntakeMotor = ?;
+
+ // public static int kCargoIntakeMotor = ?;
 
   // Joysticks
   public static int DRIVER_JOYSTICK   = 0;
