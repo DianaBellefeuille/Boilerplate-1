@@ -10,6 +10,7 @@ package frc.robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.Drivetrain.Shift;
 import frc.robot.commands.Manipulators.CargoIntake;
+import frc.robot.commands.Manipulators.CargoOutput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -24,7 +25,8 @@ public class OI {
   public static Joystick operatorJoystick = new Joystick(RobotMap.OPERATOR_JOYSTICK);
   
   public Button mShift = new JoystickButton(driverJoystick, 1);
-  public Button mShift2 = new JoystickButton(driverJoystick, 2);
+  public Button mIntake = new JoystickButton(driverJoystick, 2);
+  public Button mOutput = new JoystickButton(driverJoystick, 3);
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
@@ -49,6 +51,7 @@ public class OI {
 
   public OI(){
     mShift.whenReleased(new Shift());
-    mShift2.whileHeld(new CargoIntake());
+    mIntake.whileHeld(new CargoIntake());
+    mOutput.whileHeld(new CargoOutput());
   }
 }

@@ -5,11 +5,11 @@ import frc.robot.Robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 
-public class CargoIntake extends Command{
+public class CargoOutput extends Command{
 
   public static WPI_TalonSRX mCargoIntakeMotor = new WPI_TalonSRX(RobotMap.kCargoIntakeMotor);
   
-  public CargoIntake() {
+  public CargoOutput() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.m_subsystem);
       }
@@ -23,7 +23,7 @@ public class CargoIntake extends Command{
       // Called repeatedly when this Command is scheduled to run
       @Override
       protected void execute() {
-        mCargoIntakeMotor.set(.5);
+        mCargoIntakeMotor.set(-.5);
       }
     
       // Make this return true when this Command no longer needs to run execute()

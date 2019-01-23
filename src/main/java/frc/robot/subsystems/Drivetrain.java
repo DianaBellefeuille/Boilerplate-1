@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.RobotMap;
 import frc.robot.commands.Drivetrain.DriveJoystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -23,11 +22,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class Drivetrain extends Subsystem {
 
   // Map the CIM motors to the TalonSRX's
-  public static WPI_VictorSPX mLeftFollowerA = new WPI_VictorSPX(RobotMap.kLeftFollowerA);
-  public static WPI_VictorSPX mLeftFollowerB = new WPI_VictorSPX(RobotMap.kLeftFollowerB);
+  public static WPI_TalonSRX mLeftFollowerA = new WPI_TalonSRX(RobotMap.kLeftFollowerA);
+  public static WPI_TalonSRX mLeftFollowerB = new WPI_TalonSRX(RobotMap.kLeftFollowerB);
   public static WPI_TalonSRX mLeftLeader = new WPI_TalonSRX(RobotMap.kLeftLeader);
-  public static WPI_VictorSPX mRightFollowerB = new WPI_VictorSPX(RobotMap.kRightFollowerB);
-  public static WPI_VictorSPX mRightFollowerA= new WPI_VictorSPX(RobotMap.kRightFollowerA);
+  public static WPI_TalonSRX mRightFollowerB = new WPI_TalonSRX(RobotMap.kRightFollowerB);
+  public static WPI_TalonSRX mRightFollowerA= new WPI_TalonSRX(RobotMap.kRightFollowerA);
   public static WPI_TalonSRX mRightLeader = new WPI_TalonSRX(RobotMap.kRightLeader);
 
   // Add the motors to the speed controller groups and create the differential drivetrain
