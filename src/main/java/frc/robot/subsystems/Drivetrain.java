@@ -24,7 +24,7 @@ public class Drivetrain extends Subsystem {
   // Map the CIM motors to the TalonSRX's
   public static WPI_TalonSRX mLeftFollowerA = new WPI_TalonSRX(RobotMap.kLeftFollowerA);
   public static WPI_TalonSRX mLeftFollowerB = new WPI_TalonSRX(RobotMap.kLeftFollowerB);
-  public static WPI_TalonSRX mLeftLeader = new WPI_TalonSRX(RobotMap.kLeftLeader);
+  public static WPI_TalonSRX mLeftLeader =    new WPI_TalonSRX(RobotMap.kLeftLeader);
   public static WPI_TalonSRX mRightFollowerB = new WPI_TalonSRX(RobotMap.kRightFollowerB);
   public static WPI_TalonSRX mRightFollowerA= new WPI_TalonSRX(RobotMap.kRightFollowerA);
   public static WPI_TalonSRX mRightLeader = new WPI_TalonSRX(RobotMap.kRightLeader);

@@ -7,7 +7,7 @@ import frc.robot.RobotMap;
 
 public class CargoOutput extends Command{
 
-  public static WPI_TalonSRX mCargoIntakeMotor = new WPI_TalonSRX(RobotMap.kCargoIntakeMotor);
+  public static WPI_TalonSRX mCargoMotor = new WPI_TalonSRX(RobotMap.kCargoIntakeMotor);
   
   public CargoOutput() {
         // Use requires() here to declare subsystem dependencies
@@ -17,13 +17,13 @@ public class CargoOutput extends Command{
       // Called just before this Command runs the first time
       @Override
       protected void initialize() {
-        mCargoIntakeMotor.set(0);
+        mCargoMotor.set(0);
       }
     
       // Called repeatedly when this Command is scheduled to run
       @Override
       protected void execute() {
-        mCargoIntakeMotor.set(-.5);
+        mCargoMotor.set(-.5);
       }
     
       // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +35,7 @@ public class CargoOutput extends Command{
       // Called once after isFinished returns true
       @Override
       protected void end() {
-        mCargoIntakeMotor.set(0);
+        mCargoMotor.set(0);
       }
     
       // Called when another command which requires one or more of the same

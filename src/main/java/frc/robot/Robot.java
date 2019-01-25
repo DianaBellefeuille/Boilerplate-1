@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 // import frc.robot.commands.Drivetrain.DriveJoystick;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -28,7 +27,6 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   public static Drivetrain m_subsystem = new Drivetrain();
   public static OI m_oi;
-  public static Command DriveJoystick;
 
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
  
@@ -43,6 +41,7 @@ public class Robot extends TimedRobot {
     // Timer timestamp = new Timer();
     // Starts the camera feed
     // CameraServer.getInstance().startAutomaticCapture();
+    
     // Create the slave motors
     Drivetrain.initDefaultSetup();
   }
@@ -126,7 +125,6 @@ public class Robot extends TimedRobot {
   // @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    // DriveJoystick.start();
   }
 
    // This function is called periodically during test mode.
