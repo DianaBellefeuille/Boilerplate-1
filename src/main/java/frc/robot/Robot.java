@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Elevator;
 // import edu.wpi.first.wpilibj.Timer;
 // import edu.wpi.first.cameraserver.*;
 
@@ -25,7 +26,8 @@ import frc.robot.subsystems.Drivetrain;
  */
 
 public class Robot extends TimedRobot {
-  public static Drivetrain m_subsystem = new Drivetrain();
+  public static Drivetrain m_drivetrain = new Drivetrain();
+  public static Elevator m_elevator = new Elevator();
   public static OI m_oi;
 
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -44,6 +46,7 @@ public class Robot extends TimedRobot {
     
     // Create the slave motors
     Drivetrain.initDefaultSetup();
+    Elevator.initDefaultSetup();
   }
 
   /**

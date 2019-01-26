@@ -14,7 +14,9 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // Drivetrain
+
+  // Talon IDs for the drivetrain. Note that board Talon 0 must have an ID other
+  // than 0 due to RoboRIO
   public static int kLeftLeader = 10;
   public static int kLeftFollowerA = 1;
   public static int kLeftFollowerB   = 2;
@@ -22,7 +24,10 @@ public class RobotMap {
   public static int kRightFollowerA = 14;
   public static int kRightFollowerB  = 13;
   
-  public static int kCargoIntakeMotor = ?;
+  public static int kCargoMotor = ?;
+
+  public static int kElevatorMotorA = ?;
+  public static int kElevatorMotorB = ?;
 
   // Joysticks
   public static int DRIVER_JOYSTICK   = 0;
