@@ -15,19 +15,18 @@ package frc.robot;
  */
 public class RobotMap {
 
-  // Talon IDs for the drivetrain. Note that board Talon 0 must have an ID other
-  // than 0 due to RoboRIO
+  // Talon IDs for the drivetrain
   public static int kLeftLeader = 10;
-  public static int kLeftFollowerA = 1;
-  public static int kLeftFollowerB   = 2;
-  public static int kRightLeader = 15;
-  public static int kRightFollowerA = 14;
-  public static int kRightFollowerB  = 13;
+  public static int kLeftFollowerA = 11;
+  public static int kLeftFollowerB   = 12;
+  public static int kRightLeader = 25;
+  public static int kRightFollowerA = 24;
+  public static int kRightFollowerB  = 23;
   
-  public static int kCargoMotor = ?;
+  // public static int kCargoMotor = ?;
 
-  public static int kElevatorMotorA = ?;
-  public static int kElevatorMotorB = ?;
+  // public static int kElevatorMotorA = ?;
+  // public static int kElevatorMotorB = ?;
 
   // Joysticks
   public static int DRIVER_JOYSTICK   = 0;
@@ -39,5 +38,5 @@ public class RobotMap {
   // Pneumatics port constants
   public static int HIGH_GEAR_SOLENOID = 0;
   public static int LOW_GEAR_SOLENOID = 1;
-  public static int PCM = 22;
+  public static int PCM = 30;
 }

@@ -1,15 +1,15 @@
-package frc.robot.commands.Manipulators;
+package frc.robot.commands.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.Elevator;
 
-public class CargoOutput extends Command{
+public class ElevatorDown extends Command{
 
-  // public static WPI_TalonSRX mCargoMotor = new WPI_TalonSRX(RobotMap.kCargoMotor);
   
-  public CargoOutput() {
+  public ElevatorDown() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.m_elevator);
       }
@@ -17,13 +17,16 @@ public class CargoOutput extends Command{
       // Called just before this Command runs the first time
       @Override
       protected void initialize() {
-        // mCargoMotor.set(0);
+      //  Elevator.mElevatorMotorA.set(0);
+      //  Elevator.mElevatorMotorB.set(0);
       }
     
       // Called repeatedly when this Command is scheduled to run
       @Override
       protected void execute() {
-        // mCargoMotor.set(-.5);
+        // Depends on how we want it to work. Likely will be:
+          // Elevator.mElevatorMotorA.set(-.5);
+          // Elevator.mElevatorMotorB.set(-.5);
       }
     
       // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +38,8 @@ public class CargoOutput extends Command{
       // Called once after isFinished returns true
       @Override
       protected void end() {
-        // mCargoMotor.set(0);
+      //  Elevator.mElevatorMotorA.set(0);
+      //  Elevator.mElevatorMotorB.set(0);
       }
     
       // Called when another command which requires one or more of the same

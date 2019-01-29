@@ -17,19 +17,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 // Creates the Elevator system
 public class Elevator extends Subsystem {
 
-  // Map the ??? motors to the TalonSRX's
-  public static WPI_TalonSRX mElevatorMotorA  = new WPI_TalonSRX(RobotMap.kElevatorMotorA);
-  public static WPI_TalonSRX mElevatorMotorB  = new WPI_TalonSRX(RobotMap.kElevatorMotorB);
-
-  // Add the motors to a speed controller
-  public static SpeedControllerGroup mElevatorMotorGroup = new SpeedControllerGroup(mElevatorMotorA, mElevatorMotorB);
+  // Map the motors to the TalonSRX's
+  // public static WPI_TalonSRX mElevatorMotorA  = new WPI_TalonSRX(RobotMap.kElevatorMotorA);
+  // public static WPI_TalonSRX mElevatorMotorB  = new WPI_TalonSRX(RobotMap.kElevatorMotorB);
 
  // This method will set up the default settings of the elevator motor controllers
   public static void initDefaultSetup() {
 
     // Set brake mode
-    mElevatorMotorA.setNeutralMode(NeutralMode.Brake);
-    mElevatorMotorB.setNeutralMode(NeutralMode.Brake);
+    // mElevatorMotorA.setNeutralMode(NeutralMode.Brake);
+    // mElevatorMotorB.setNeutralMode(NeutralMode.Brake);
   }
 
   @Override

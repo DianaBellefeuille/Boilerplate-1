@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.RobotMap;
 import frc.robot.commands.Drivetrain.DriveJoystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -26,8 +27,8 @@ public class Drivetrain extends Subsystem {
   public static WPI_TalonSRX mLeftFollowerB  = new WPI_TalonSRX(RobotMap.kLeftFollowerB);
   public static WPI_TalonSRX mLeftLeader     = new WPI_TalonSRX(RobotMap.kLeftLeader);
   public static WPI_TalonSRX mRightFollowerB = new WPI_TalonSRX(RobotMap.kRightFollowerB);
-  public static WPI_TalonSRX mRightFollowerA = new WPI_TalonSRX(RobotMap.kRightFollowerA);
-  public static WPI_TalonSRX mRightLeader    = new WPI_TalonSRX(RobotMap.kRightLeader);
+  public static WPI_VictorSPX mRightFollowerA = new WPI_VictorSPX(RobotMap.kRightFollowerA);
+  public static WPI_VictorSPX mRightLeader    = new WPI_VictorSPX(RobotMap.kRightLeader);
 
   // Add the motors to the speed controller groups and create the differential drivetrain
   public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(mLeftLeader);
