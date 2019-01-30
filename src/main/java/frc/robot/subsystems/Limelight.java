@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.Limelight.LimelightSetup;
+import frc.robot.commands.Limelight.LimelightGetData;;
 
 
 // Creates the Limelight system
@@ -21,6 +21,6 @@ public class Limelight extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new LimelightSetup());
+    setDefaultCommand(new LimelightGetData());
   }
 }
