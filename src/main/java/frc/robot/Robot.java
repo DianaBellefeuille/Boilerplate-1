@@ -9,11 +9,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-// import frc.robot.commands.Drivetrain.DriveJoystick;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Limelight;
 // import edu.wpi.first.wpilibj.Timer;
 // import edu.wpi.first.cameraserver.*;
 
@@ -28,6 +28,7 @@ import frc.robot.subsystems.Elevator;
 public class Robot extends TimedRobot {
   public static Drivetrain m_drivetrain = new Drivetrain();
   public static Elevator m_elevator = new Elevator();
+  public static Limelight m_limelight = new Limelight();
   public static OI m_oi;
 
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -44,8 +45,9 @@ public class Robot extends TimedRobot {
     // Starts the camera feed
     // CameraServer.getInstance().startAutomaticCapture();
     
-    // Create the slave motors
+    // Create the slave motors and brake modes of the Drivetrain
     Drivetrain.initDefaultSetup();
+    // Set the neutral mode of the Elevator
     Elevator.initDefaultSetup();
   }
 
