@@ -7,11 +7,10 @@ import frc.robot.RobotMap;
 
 public class CargoOutput extends Command{
 
-  // public static WPI_TalonSRX mCargoMotor = new WPI_TalonSRX(RobotMap.kCargoMotor);
+  // public static WPI_TalonSRX mCargoMotor = new WPI_TalonSRX(RobotMap.kCargoMotorID);
   
   public CargoOutput() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.m_elevator);
       }
     
       // Called just before this Command runs the first time

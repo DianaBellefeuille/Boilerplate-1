@@ -1,16 +1,10 @@
 package frc.robot.commands.Limelight;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.Limelight.LimelightDataStream;
 
 // A command for practicing translating data recieved from the limelight into 
 public class LimelightSeeking extends Command{
-
-  NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-  NetworkTableEntry tx = table.getEntry("tx");
 
   public LimelightSeeking() {
         // Use requires() here to declare subsystem dependencies

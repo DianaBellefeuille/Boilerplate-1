@@ -33,7 +33,7 @@ public class DriveJoystick extends Command {
   protected void execute() {
     // Get the joystick inputs
     double xSpeed = -OI.driverJoystick.getY();
-    double zRotation = -(OI.driverJoystick.getX() * RobotMap.DRIVER_Z_ROTATION_GAIN);
+    double zRotation = -(OI.driverJoystick.getX() * RobotMap.kDriverZJoystickGain);
 
     // Apply a joystick deadband;
     if (xSpeed < 0.05 && xSpeed > -0.05) {

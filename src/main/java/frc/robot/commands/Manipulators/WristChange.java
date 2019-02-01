@@ -5,24 +5,24 @@ import frc.robot.Robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 
-public class CargoIntake extends Command{
+public class WristChange extends Command{
 
-  // public static WPI_TalonSRX mCargoMotor = new WPI_TalonSRX(RobotMap.kCargoMotorID);
+  // public static WPI_TalonSRX mWristMotor = new WPI_TalonSRX(RobotMap.kWristMotor);
+  boolean isFinished = false;
   
-  public CargoIntake() {
+  public WristChange() {
         // Use requires() here to declare subsystem dependencies
       }
     
       @Override
       protected void initialize() {
-        // mCargoMotor.set(0);
+        
       }
     
       @Override
       protected void execute() {
-        // mCargoMotor.set(.5);
       }
-    
+
       @Override
       protected boolean isFinished() {
         return false;
@@ -30,7 +30,6 @@ public class CargoIntake extends Command{
     
       @Override
       protected void end() {
-        // mCargoMotor.set(0);
       }
     
       @Override

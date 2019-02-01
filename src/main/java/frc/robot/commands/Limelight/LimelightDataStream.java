@@ -1,43 +1,33 @@
 package frc.robot.commands.Limelight;
 
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+// A command for practicing translating data recieved from the limelight into 
+public class LimelightDataStream extends Command{
 
-// Example command for gathering data from the Limelight
-public class LimelightGetData extends Command{
+  NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  Double tx;
+  Double tv;
 
-    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-    NetworkTableEntry tx = table.getEntry("tx");
-    NetworkTableEntry ty = table.getEntry("ty");
-    NetworkTableEntry ta = table.getEntry("ta");
-
-
-  public LimelightGetData() {
+  public LimelightDataStream() {
         // Use requires() here to declare subsystem dependencies
+        // requires(Robot.m_limelight);
       }
     
       // Called just before this Command runs the first time
       @Override
       protected void initialize() {
-
       }
     
       // Called repeatedly when this Command is scheduled to run
       @Override
       protected void execute() {
-          //read values periodically
-            double x = tx.getDouble(0.0);
-            double y = ty.getDouble(0.0);
-            double area = ta.getDouble(0.0);
-
-            //post to smart dashboard periodically
-            // SmartDashboard.putNumber("LimelightX", x); 
-            // SmartDashboard.putNumber("LimelightY", y);
-            // SmartDashboard.putNumber("LimelightArea", area);
+        NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+        tx = table.getEntry("tx").getDouble(0.0);
+        tv = table.getEntry("tv").getDouble(0.0);
       }
     
       // Make this return true when this Command no longer needs to run execute()

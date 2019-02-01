@@ -8,19 +8,15 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.Limelight.LimelightGetData;;
+import frc.robot.commands.Limelight.LimelightDataStream;
 
 
-// Creates the Limelight system
+// Creates the Elevator system
 public class Limelight extends Subsystem {
-
- // This method will set up the default settings of the elevator motor controllers
-  public static void initDefaultSetup() {
-
-  }
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new LimelightGetData());
+    // Set the default command for a subsystem here.
+    setDefaultCommand(new LimelightDataStream());
   }
 }
