@@ -20,7 +20,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    // Create the slave motors and brake modes of the Drivetrain
+    // Create the slave motors and brake mode of the Drivetrain
     Drivetrain.initDefaultSetup();
     // Set the neutral mode of the Elevator
     Elevator.initDefaultSetup();

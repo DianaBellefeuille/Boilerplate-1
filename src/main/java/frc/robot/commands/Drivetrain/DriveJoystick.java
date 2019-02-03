@@ -36,12 +36,13 @@ public class DriveJoystick extends Command {
     double zRotation = -(OI.driverJoystick.getX() * RobotMap.kDriverZJoystickGain);
 
     // Apply a joystick deadband;
-    if (xSpeed < 0.05 && xSpeed > -0.05) {
+    if (xSpeed < 0.08 && xSpeed > -0.08) {
         xSpeed = 0.0;
     }
-    if (zRotation < 0.05 && zRotation > -0.05) {
+    if (zRotation < 0.08 && zRotation > -0.08) {
         zRotation = 0.0;
     }
+
     // Blake likes the arcade drive best.
     Drivetrain.diffDrive.arcadeDrive(xSpeed, zRotation);
   }

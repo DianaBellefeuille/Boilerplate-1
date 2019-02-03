@@ -1,9 +1,8 @@
 package frc.robot.commands.Limelight;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.commands.Limelight.LimelightDataStream;
 
-// A command for practicing translating data recieved from the limelight into 
+// A command for turning the drivetrain over to the Limelight
 public class LimelightSeeking extends Command{
 
   public LimelightSeeking() {

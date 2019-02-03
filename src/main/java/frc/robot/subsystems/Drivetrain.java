@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.RobotMap;
 import frc.robot.commands.Drivetrain.DriveJoystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -23,12 +22,12 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class Drivetrain extends Subsystem {
 
   // Map the CIM motors to the TalonSRX's
-  public static WPI_TalonSRX mLeftFollowerA  = new WPI_TalonSRX(RobotMap.kLeftFollowerAID);
-  public static WPI_TalonSRX mLeftFollowerB  = new WPI_TalonSRX(RobotMap.kLeftFollowerBID);
-  public static WPI_TalonSRX mLeftLeader     = new WPI_TalonSRX(RobotMap.kLeftLeaderID);
-  public static WPI_TalonSRX mRightFollowerB = new WPI_TalonSRX(RobotMap.kRightFollowerBID);
-  public static WPI_VictorSPX mRightFollowerA = new WPI_VictorSPX(RobotMap.kRightFollowerAID);
-  public static WPI_VictorSPX mRightLeader    = new WPI_VictorSPX(RobotMap.kRightLeaderID);
+  public static WPI_TalonSRX mLeftFollowerA  = new WPI_TalonSRX(RobotMap.kLeftFollerAId);
+  public static WPI_TalonSRX mLeftFollowerB  = new WPI_TalonSRX(RobotMap.kLeftFollwerBId);
+  public static WPI_TalonSRX mLeftLeader     = new WPI_TalonSRX(RobotMap.kLeftLeaderId);
+  public static WPI_TalonSRX mRightFollowerB = new WPI_TalonSRX(RobotMap.kRightFollowerBId);
+  public static WPI_TalonSRX mRightFollowerA = new WPI_TalonSRX(RobotMap.kRightFollowerAId);
+  public static WPI_TalonSRX mRightLeader    = new WPI_TalonSRX(RobotMap.kRightLeaderId);
 
   // Add the motors to the speed controller groups and create the differential drivetrain
   public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(mLeftLeader);
@@ -36,16 +35,16 @@ public class Drivetrain extends Subsystem {
   public static DifferentialDrive diffDrive = new DifferentialDrive(leftDrive, rightDrive);
 
   // Map the pneumatics for the drivetrain
-  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCM, RobotMap.kHighGearSolenoid, RobotMap.kLowGearSolenoid);
+  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, RobotMap.kHighGearSolenoId, RobotMap.kLowGearSolenoId);
 
  // This method will set up the default settings of the drivetrain motor controllers 
  
   public static void initDefaultSetup() {
     // Set the front and middle motors to be the followers of the rear motors
-    mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderID);
-    mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeaderID);
-    mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeaderID);
-    mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeaderID);
+    mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderId);
+    mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeaderId);
+    mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
+    mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
 
     // Set brake mode
     mLeftLeader.setNeutralMode(NeutralMode.Brake);

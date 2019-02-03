@@ -11,28 +11,29 @@ package frc.robot;
 public class RobotMap {
 
   // Talon IDs for the drivetrain
-  public static int kLeftLeaderID = 10;
-  public static int kLeftFollowerAID = 11;
-  public static int kLeftFollowerBID   = 12;
-  public static int kRightLeaderID = 25;
-  public static int kRightFollowerAID = 24;
-  public static int kRightFollowerBID  = 23;
+  public static int kLeftLeaderId = 25;
+  public static int kLeftFollerAId = 24;
+  public static int kLeftFollwerBId   = 23;
+  public static int kRightLeaderId = 10;
+  public static int kRightFollowerAId = 11;
+  public static int kRightFollowerBId  = 12;
   
   // public static int kCargoMotorID = ?;
-  // public static int kWristMotorID = ?;
 
-  // public static int kElevatorMotorAID = ?;
-  // public static int kElevatorMotorBID = ?;
+   //public static int kWristMotorID = ?;
+
+  public static int kElevatorMotorAId = 22;
+  public static int kElevatorMotorBId = 21;
 
   // Joysticks
-  public static int kDriveJoystickID  = 0;
-  public static int kOperatorHoystickID = 1;
+  public static int kDriveJoystickId  = 0;
+  public static int kOperatorJoystickId = 1;
 
   // Driver turning gain
   public static double kDriverZJoystickGain= 0.7;
 
   // Pneumatics port constants
-  public static int kHighGearSolenoid = 0;
-  public static int kLowGearSolenoid = 1;
-  public static int kPCM = 30;
+  public static int kHighGearSolenoId = 0;
+  public static int kLowGearSolenoId = 1;
+  public static int kPCMId = 30;
 }
