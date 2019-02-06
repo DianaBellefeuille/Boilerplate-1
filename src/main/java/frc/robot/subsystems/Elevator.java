@@ -4,21 +4,23 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-
-// Creates the Elevator system
+// Creates the elevator subsystem
 public class Elevator extends Subsystem {
 
-  // Map the motors to the TalonSRX's
-   public static WPI_TalonSRX mElevatorMotorA  = new WPI_TalonSRX(RobotMap.kElevatorMotorAId);
-   public static WPI_TalonSRX mElevatorMotorB  = new WPI_TalonSRX(RobotMap.kElevatorMotorBId);
+  // Motors
+   private static WPI_TalonSRX mElevatorMotorA  = new WPI_TalonSRX(RobotMap.kElevatorMotorAId);
+   private static WPI_TalonSRX mElevatorMotorB  = new WPI_TalonSRX(RobotMap.kElevatorMotorBId);
 
-  // public static WPI_TalonSRX mCargoMotor = new WPI_TalonSRX(RobotMap.kCargoMotorID);
+  // Logger
+  private final Logger mLogger = LoggerFactory.getLogger(Drivetrain.class);
 
  // This method will set up the default settings of the elevator motor controllers
   public static void initDefaultSetup() {
 
-    // Set brake mode
+    // Neutral Mode
      mElevatorMotorA.setNeutralMode(NeutralMode.Brake);
      mElevatorMotorB.setNeutralMode(NeutralMode.Brake);
 
@@ -26,15 +28,13 @@ public class Elevator extends Subsystem {
     // mElevatorMotorB.setInverted(true);
   }
 
-  // This is the method for moving the elevator down
+  // Elevator Down
   public static void ElevatorDown() {
-    mElevatorMotorA.setNeutralMode(NeutralMode.Coast);
-    mElevatorMotorB.setNeutralMode(NeutralMode.Coast);
-
     mElevatorMotorA.set(-.1);
     mElevatorMotorB.set(-.1);
   }
-  // This is the method for moving the elevator up
+  
+  // Elevator Up
   public static void ElevatorUp() {
     mElevatorMotorA.set(.2);
     mElevatorMotorB.set(.2);

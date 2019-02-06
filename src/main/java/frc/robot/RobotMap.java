@@ -20,12 +20,10 @@ public class RobotMap {
   // Joysticks
   public static int kDriveJoystickId  = 0;
   public static int kOperatorJoystickId = 1;
+  public static double kJoystickDeadband = 0.05;
 
   // Driver turning gain
   public static double kDriverZJoystickGain= 0.7;
-
-  //Configures the deadband 
-  public static double kJoystickDeadband = 0.05;
 
   // Pneumatics port constants
   public static int kHighGearSolenoid = 0;

@@ -12,8 +12,6 @@ public class ElevatorUp extends Command{
     
       @Override
       protected void initialize() {
-        Elevator.mElevatorMotorA.set(0);
-        Elevator.mElevatorMotorB.set(0);
         setTimeout(1.0);
       }
     
@@ -29,8 +27,6 @@ public class ElevatorUp extends Command{
     
       @Override
       protected void end() {
-        Elevator.mElevatorMotorA.set(0);
-        Elevator.mElevatorMotorB.set(0);
       }
     
       @Override

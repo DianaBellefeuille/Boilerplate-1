@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 
-// Creates the drivetrain
+// Creates the drivetrain subsystem
 public class Drivetrain extends Subsystem {
 
   // Map the CIM motors to the TalonSRX's
@@ -31,7 +31,6 @@ public class Drivetrain extends Subsystem {
   public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, RobotMap.kHighGearSolenoid, RobotMap.kLowGearSolenoid);
 
  // This method will set up the default settings of the drivetrain motor controllers 
- 
   public static void initDefaultSetup() {
     // Set the front and middle motors to be the followers of the rear motors
     mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderId);
@@ -39,7 +38,7 @@ public class Drivetrain extends Subsystem {
     mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
     mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
 
-    // Set brake mode
+    // Set Neutral mode
     mLeftLeader.setNeutralMode(NeutralMode.Brake);
     mLeftFollowerA.setNeutralMode(NeutralMode.Brake);
     mLeftFollowerB.setNeutralMode(NeutralMode.Brake);
