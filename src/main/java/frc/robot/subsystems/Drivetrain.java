@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -35,7 +28,7 @@ public class Drivetrain extends Subsystem {
   public static DifferentialDrive diffDrive = new DifferentialDrive(leftDrive, rightDrive);
 
   // Map the pneumatics for the drivetrain
-  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, RobotMap.kHighGearSolenoId, RobotMap.kLowGearSolenoId);
+  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, RobotMap.kHighGearSolenoid, RobotMap.kLowGearSolenoid);
 
  // This method will set up the default settings of the drivetrain motor controllers 
  
@@ -60,9 +53,21 @@ public class Drivetrain extends Subsystem {
     m_Shifter.set(DoubleSolenoid.Value.kReverse);
   }
 
+  // Takes joystick inputs and runs through the drivetrain
+  public void setDrivetrainMove(double xSpeed, double zRotation) {
+    Drivetrain.diffDrive.arcadeDrive(xSpeed, zRotation);
+  }
+
+  public void shiftDrivetrain() {
+    if (Drivetrain.m_Shifter.get() == DoubleSolenoid.Value.kForward) {
+      Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kReverse);
+  } else {
+    Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kForward);
+  }
+}
+
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
     setDefaultCommand(new DriveJoystick());
   }
 }

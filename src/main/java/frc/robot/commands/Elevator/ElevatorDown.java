@@ -6,10 +6,9 @@ import frc.robot.subsystems.Elevator;
 
 public class ElevatorDown extends Command{
 
-  
   public ElevatorDown() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.m_elevator);
+        requires(Robot.mElevator);
       }
     
       // Called just before this Command runs the first time
@@ -17,20 +16,19 @@ public class ElevatorDown extends Command{
       protected void initialize() {
         Elevator.mElevatorMotorA.set(0);
         Elevator.mElevatorMotorB.set(0);
+        setTimeout(1.0);
       }
     
       // Called repeatedly when this Command is scheduled to run
       @Override
       protected void execute() {
-        // Depends on how we want it to work. Likely will be:
-       Elevator.mElevatorMotorA.set(-.1);
-       Elevator.mElevatorMotorB.set(-.1);
+        Elevator.ElevatorDown();
       }
     
       // Make this return true when this Command no longer needs to run execute()
       @Override
       protected boolean isFinished() {
-        return false;
+        return isTimedOut();
       }
     
       // Called once after isFinished returns true
@@ -44,6 +42,7 @@ public class ElevatorDown extends Command{
       // subsystems is scheduled to run
       @Override
       protected void interrupted() {
+        end();
       }
     }
     

@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -33,8 +26,21 @@ public class Elevator extends Subsystem {
     // mElevatorMotorB.setInverted(true);
   }
 
+  // This is the method for moving the elevator down
+  public static void ElevatorDown() {
+    mElevatorMotorA.setNeutralMode(NeutralMode.Coast);
+    mElevatorMotorB.setNeutralMode(NeutralMode.Coast);
+
+    mElevatorMotorA.set(-.1);
+    mElevatorMotorB.set(-.1);
+  }
+  // This is the method for moving the elevator up
+  public static void ElevatorUp() {
+    mElevatorMotorA.set(.2);
+    mElevatorMotorB.set(.2);
+  }
+
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
   }
 }
