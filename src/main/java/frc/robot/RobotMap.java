@@ -9,13 +9,6 @@ public class RobotMap {
   public static int kRightLeaderId = 10;
   public static int kRightFollowerAId = 11;
   public static int kRightFollowerBId  = 12;
-  
-  // public static int kCargoMotorID = ?;
-
-   //public static int kWristMotorID = ?;
-
-  public static int kElevatorMotorAId = 22;
-  public static int kElevatorMotorBId = 21;
 
   // Joysticks
   public static int kDriveJoystickId  = 0;

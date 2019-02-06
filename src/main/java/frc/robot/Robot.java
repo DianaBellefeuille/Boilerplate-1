@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 public class Robot extends TimedRobot {
   public static Drivetrain mDrivetrain = new Drivetrain();
-  public static Elevator mElevator = new Elevator();
   public static OI mOI = new OI();
   private final Logger mLogger = LoggerFactory.getLogger(Robot.class);
 
@@ -16,8 +15,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Create the slave motors and brake mode of the Drivetrain
     Drivetrain.initDefaultSetup();
-    // Set the neutral mode of the Elevator
-    Elevator.initDefaultSetup();
   }
 
   @Override
