@@ -2,12 +2,14 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Drivetrain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Robot extends TimedRobot {
   public static Drivetrain mDrivetrain = new Drivetrain();
+  public static Elevator mElevator = Elevator.create();
   public static OI mOI = new OI();
   private final Logger mLogger = LoggerFactory.getLogger(Robot.class);
 

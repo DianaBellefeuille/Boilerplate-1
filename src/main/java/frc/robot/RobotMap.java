@@ -10,6 +10,10 @@ public class RobotMap {
   public static int kRightFollowerAId = 11;
   public static int kRightFollowerBId  = 12;
 
+  // Talon IDs for the elevator
+  public static int kElevatorMotorAId = 22;
+  public static int kElevatorMotorBId = 21;
+
   // Joysticks
   public static int kDriveJoystickId  = 0;
   public static int kOperatorJoystickId = 1;
