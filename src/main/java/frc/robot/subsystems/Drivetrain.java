@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 import frc.robot.commands.Drivetrain.DriveJoystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -16,6 +17,8 @@ import org.slf4j.LoggerFactory;
 public class Drivetrain extends Subsystem {
 
   private final Logger mLogger = LoggerFactory.getLogger(Drivetrain.class);
+
+  boolean isHighGear;
 
   // Map the CIM motors to the TalonSRX's
   public static WPI_TalonSRX mLeftFollowerA  = new WPI_TalonSRX(RobotMap.kLeftFollerAId);
@@ -31,7 +34,7 @@ public class Drivetrain extends Subsystem {
   public static DifferentialDrive diffDrive = new DifferentialDrive(leftDrive, rightDrive);
 
   // Map the pneumatics for the drivetrain
-  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, 2, 3);
+  public static DoubleSolenoid mShifter = new DoubleSolenoid(RobotMap.kPCMId, 2, 3);
 
  // This method will set up the default settings of the drivetrain motor controllers 
   public void initDefaultSetup() {
@@ -52,26 +55,40 @@ public class Drivetrain extends Subsystem {
     diffDrive.setSafetyEnabled(false);
 
     // Set the solenoids
-    m_Shifter.set(DoubleSolenoid.Value.kReverse);
+    mShifter.set(DoubleSolenoid.Value.kReverse);
 
     mLogger.info("Drivetrain subsystem created");
-  }
+   }
 
-  // Takes joystick inputs and runs through the drivetrain
-  public void setDrivetrainMove(double xSpeed, double zRotation) {
-    Drivetrain.diffDrive.arcadeDrive(xSpeed, zRotation);
-  }
+    // Takes joystick inputs and runs through the drivetrain
+    public void setDrivetrainMove(double xSpeed, double zRotation) {
+      Drivetrain.diffDrive.arcadeDrive(xSpeed, zRotation);
+    }
 
-  public void shiftDrivetrain() {
-    if (Drivetrain.m_Shifter.get() == DoubleSolenoid.Value.kForward) {
-      Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kReverse);
-  } else {
-    Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kForward);
-  }
-}
+    // public void shiftDrivetrain() {
+    //   if (Drivetrain.mShifter.get() == DoubleSolenoid.Value.kForward) {
+    //     Drivetrain.mShifter.set(DoubleSolenoid.Value.kReverse);
+    //   } else {
+    //    Drivetrain.mShifter.set(DoubleSolenoid.Value.kForward);
+    //   }
+    // }
 
-  @Override
-  public void initDefaultCommand() {
-    setDefaultCommand(new DriveJoystick());
+    public void setHighGear(boolean wantsHighGear) {
+      if (wantsHighGear = true) {
+        isHighGear = true;
+        mShifter.set(Value.kForward);
+      } else if (wantsHighGear = false) {
+        isHighGear = false;
+        mShifter.set(Value.kForward);
+      }
+    }
+
+    public boolean isHighGear() {
+      return isHighGear;
+    }
+
+    @Override
+    public void initDefaultCommand() {
+      setDefaultCommand(new DriveJoystick());
+    }
   }
-}

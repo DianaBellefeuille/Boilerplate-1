@@ -18,7 +18,7 @@ public class Shift extends Command{
     
       @Override
       protected void execute() {
-        Robot.mDrivetrain.shiftDrivetrain();
+        Robot.mDrivetrain.setHighGear(!Robot.mDrivetrain.isHighGear());
         mIsFinished = true;
       }
     
