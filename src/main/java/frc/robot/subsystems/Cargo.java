@@ -26,6 +26,7 @@ public class Cargo extends Subsystem {
 
   public void initDefaultSetup() {
     mCargoMotor.setNeutralMode(NeutralMode.Coast);
+    mLogger.info("Cargo subsystem created");
   }
 
   public void CargoIntake() {
