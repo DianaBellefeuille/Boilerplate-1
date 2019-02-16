@@ -74,6 +74,6 @@ public static void initDefaultSetup() {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ElevatorJoystick());
+    // setDefaultCommand(new ElevatorJoystick());
   }
 }

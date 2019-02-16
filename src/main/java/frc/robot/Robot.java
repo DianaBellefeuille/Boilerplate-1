@@ -6,6 +6,7 @@ import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Cargo;
 import frc.robot.subsystems.Panel;
+import frc.robot.subsystems.Wrist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,7 @@ public class Robot extends TimedRobot {
   public static Drivetrain mDrivetrain = new Drivetrain();
   public static Elevator mElevator = new Elevator();
   public static Cargo mCargo = new Cargo();
+  public static Wrist mWrist = new Wrist();
   public static OI mOI = new OI();
   public static Panel mPanel = new Panel();
   private final Logger mLogger = LoggerFactory.getLogger(Robot.class);
@@ -23,6 +25,7 @@ public class Robot extends TimedRobot {
     Drivetrain.initDefaultSetup();
     Elevator.initDefaultSetup();
     Panel.initDefaultSetup();
+    Wrist.initDefaultSetup();
   }
 
   @Override

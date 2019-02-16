@@ -1,11 +1,11 @@
-package frc.robot.commands.Cargo;
+package frc.robot.commands.Wrist;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class CargoPodStop extends Command {
+public class WristStop extends Command {
 
-  public CargoPodStop() {
+  public WristStop() {
     requires(Robot.mCargo);
   }
 
@@ -15,8 +15,7 @@ public class CargoPodStop extends Command {
 
   @Override
   protected void execute() {
-    Robot.mCargo.CargoStop();
-
+    Robot.mWrist.WristStop();
   }
 
   @Override

@@ -9,10 +9,13 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Creates the drivetrain subsystem
 public class Drivetrain extends Subsystem {
+
+  private final Logger mLogger = LoggerFactory.getLogger(Drivetrain.class);
 
   // Map the CIM motors to the TalonSRX's
   public static WPI_TalonSRX mLeftFollowerA  = new WPI_TalonSRX(RobotMap.kLeftFollerAId);

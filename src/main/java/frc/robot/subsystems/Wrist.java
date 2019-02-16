@@ -7,11 +7,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import frc.robot.commands.Wrist.WristJoystick;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // Creates the elevator subsystem
-public class Cargo extends Subsystem {
+public class Wrist extends Subsystem {
 
   public enum SystemState {
     Autonomous,
@@ -19,26 +21,32 @@ public class Cargo extends Subsystem {
     Testing
   }
 
-  private final WPI_TalonSRX mCargoMotor = new WPI_TalonSRX(RobotMap.kCargoMotorID);
+  public static WPI_TalonSRX mWristMotor = new WPI_TalonSRX(RobotMap.kWristMotorID);
 
   // Logger
-  private final Logger mLogger = LoggerFactory.getLogger(Cargo.class);
+  private final Logger mLogger = LoggerFactory.getLogger(Wrist.class);
 
-  public void initDefaultSetup() {
-    mCargoMotor.setNeutralMode(NeutralMode.Coast);
-    mLogger.info("Cargo subsystem created");
+  public static void initDefaultSetup() {
+    mWristMotor.setNeutralMode(NeutralMode.Brake);
   }
 
-  public void CargoIntake() {
-      mCargoMotor.set(1.0);
+  public void WristUp() {
+    mWristMotor.set(.5);
+    mLogger.info("UP");
   }
 
-  public void CargoOutput() {
-    mCargoMotor.set(-1.0);
+  public void WristDown() {
+    mWristMotor.set(-.5);
+    mLogger.info("DOWN");
   }
 
-  public void CargoStop() {
-    mCargoMotor.set(0.0);
+  public void WristStop() {
+    mWristMotor.set(0.0);
+    mLogger.info("STOP");
+  }
+
+  public void OpenLoop(double xWrist) {
+    mWristMotor.set(xWrist);
   }
 
 //   public Cargo(WPI_TalonSRX cargomotor) {
@@ -55,6 +63,6 @@ public class Cargo extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-
+    setDefaultCommand(new WristJoystick());
   }
 }
