@@ -22,10 +22,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // Create the slave motors and brake mode of the Drivetrain
-    Drivetrain.initDefaultSetup();
-    Elevator.initDefaultSetup();
-    Panel.initDefaultSetup();
-    Wrist.initDefaultSetup();
+    mDrivetrain.initDefaultSetup();
+    mElevator.initDefaultSetup();
+    mPanel.initDefaultSetup();
+    mCargo.initDefaultSetup();
+    mWrist.initDefaultSetup();
   }
 
   @Override

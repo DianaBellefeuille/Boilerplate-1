@@ -34,7 +34,7 @@ public class Drivetrain extends Subsystem {
   public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, 2, 3);
 
  // This method will set up the default settings of the drivetrain motor controllers 
-  public static void initDefaultSetup() {
+  public void initDefaultSetup() {
     // Set the front and middle motors to be the followers of the rear motors
     mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderId);
     mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeaderId);
@@ -53,6 +53,8 @@ public class Drivetrain extends Subsystem {
 
     // Set the solenoids
     m_Shifter.set(DoubleSolenoid.Value.kReverse);
+
+    mLogger.info("Drivetrain subsystem created");
   }
 
   // Takes joystick inputs and runs through the drivetrain

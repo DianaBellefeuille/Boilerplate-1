@@ -22,8 +22,9 @@ public class Panel extends Subsystem {
   // Logger
   private final Logger mLogger = LoggerFactory.getLogger(Panel.class);
 
-  public static void initDefaultSetup() {
+  public void initDefaultSetup() {
       mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+      mLogger.info("Panel Intake subsystem created");
   }
 
   /**

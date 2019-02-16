@@ -27,7 +27,7 @@ public class OI {
   public static Joystick operatorJoystick = new Joystick(RobotMap.kOperatorJoystickId);
   
   // this shifts the drivetrain between low gear and high gear
-  // public Button mShift = new JoystickButton(driverJoystick, 1);
+  public Button mShift = new JoystickButton(driverJoystick, 1);
 
   private Button mCargoIn = new JoystickButton(operatorJoystick, 1);
   private Button mCargoOut = new JoystickButton(operatorJoystick, 2);
@@ -38,7 +38,7 @@ public class OI {
   private Button mPanelShift = new JoystickButton(operatorJoystick, 5);
 
   public OI(){
-    // mShift.whenPressed(new Shift());
+    mShift.whenPressed(new Shift());
     mPanelShift.whenPressed(new PanelIntakeShift());
 
     mCargoIn.whenPressed(new CargoPodIntake());

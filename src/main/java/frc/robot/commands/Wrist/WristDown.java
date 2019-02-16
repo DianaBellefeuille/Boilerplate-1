@@ -6,7 +6,7 @@ import frc.robot.Robot;
 public class WristDown extends Command {
 
   public WristDown() {
-    requires(Robot.mCargo);
+    requires(Robot.mWrist);
   }
 
   @Override

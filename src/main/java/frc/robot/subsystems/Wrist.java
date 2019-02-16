@@ -26,23 +26,21 @@ public class Wrist extends Subsystem {
   // Logger
   private final Logger mLogger = LoggerFactory.getLogger(Wrist.class);
 
-  public static void initDefaultSetup() {
+  public void initDefaultSetup() {
     mWristMotor.setNeutralMode(NeutralMode.Brake);
+    mLogger.info("Wrist subsystem created");
   }
 
   public void WristUp() {
     mWristMotor.set(.5);
-    mLogger.info("UP");
   }
 
   public void WristDown() {
     mWristMotor.set(-.5);
-    mLogger.info("DOWN");
   }
 
   public void WristStop() {
     mWristMotor.set(0.0);
-    mLogger.info("STOP");
   }
 
   public void OpenLoop(double xWrist) {

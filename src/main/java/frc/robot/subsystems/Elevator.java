@@ -26,11 +26,13 @@ public class Elevator extends Subsystem {
   private final Logger mLogger = LoggerFactory.getLogger(Elevator.class);
 
 
-public static void initDefaultSetup() {
+public void initDefaultSetup() {
     mElevatorMotorA.setNeutralMode(NeutralMode.Coast);
     mElevatorMotorB.setNeutralMode(NeutralMode.Coast);
 
     mElevatorMotorB.set(ControlMode.Follower, RobotMap.kElevatorMotorAId);
+
+    mLogger.info("Elevator subsystem created");
 }
 
   // Elevator Down
