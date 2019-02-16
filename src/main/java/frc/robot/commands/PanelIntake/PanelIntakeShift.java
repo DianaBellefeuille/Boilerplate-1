@@ -1,7 +1,7 @@
 package frc.robot.commands.PanelIntake;
 
 import edu.wpi.first.wpilibj.command.Command;
-// import frc.robot.Robot;
+import frc.robot.Robot;
 
 public class PanelIntakeShift extends Command{
 
@@ -17,7 +17,7 @@ public class PanelIntakeShift extends Command{
     
       @Override
       protected void execute() {
-        // Robot.mPanel.shiftPanelIntake(!Robot.mPanel.isPanelClosed());
+        Robot.mPanel.shiftPanelIntake(!Robot.mPanel.isPanelClosed());
         mIsFinished = true;
       }
     

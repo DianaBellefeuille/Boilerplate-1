@@ -28,11 +28,11 @@ public class ElevatorJoystick extends Command {
       xElevator = 0.0;
     }
 
-    if (xElevator > 0.0 && xElevator < 1.0) {
-      xElevator = xElevator * 0.3;
-    } else if (xElevator < 0.0 && xElevator > -1.0) {
-      xElevator = xElevator * 0.1;
-    }
+    // if (xElevator > 0.0 && xElevator < 1.0) {
+    //   xElevator = xElevator * 0.4;
+    // } else if (xElevator < 0.0 && xElevator > -1.0) {
+    //   xElevator = xElevator * 0.2;
+    // }
 
     if (xElevator > 1.0) {
       xElevator = 1.0;

@@ -7,6 +7,8 @@ import frc.robot.commands.Cargo.CargoPodOutput;
 import frc.robot.commands.Cargo.CargoPodStop;
 import frc.robot.commands.Cargo.CargoPodIntake;
 
+import frc.robot.commands.PanelIntake.PanelIntakeShift;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -26,6 +28,8 @@ public class OI {
   private Button mCargoIn = new JoystickButton(operatorJoystick, 1);
   private Button mCargoOut = new JoystickButton(operatorJoystick, 2);
 
+  private Button mPanelShift = new JoystickButton(operatorJoystick, 3);
+
   public OI(){
     mShift.whenPressed(new Shift());
    
@@ -34,5 +38,7 @@ public class OI {
 
     mCargoIn.whenReleased(new CargoPodStop());
     mCargoOut.whenReleased(new CargoPodStop());
+
+    mPanelShift.whenPressed(new PanelIntakeShift());
   }
 }

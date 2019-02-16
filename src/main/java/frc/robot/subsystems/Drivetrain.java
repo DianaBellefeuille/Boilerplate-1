@@ -28,7 +28,7 @@ public class Drivetrain extends Subsystem {
   public static DifferentialDrive diffDrive = new DifferentialDrive(leftDrive, rightDrive);
 
   // Map the pneumatics for the drivetrain
-  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, RobotMap.kHighGearSolenoid, RobotMap.kLowGearSolenoid);
+  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, 2, 3);
 
  // This method will set up the default settings of the drivetrain motor controllers 
   public static void initDefaultSetup() {

@@ -27,8 +27,8 @@ public class Elevator extends Subsystem {
 
 
 public static void initDefaultSetup() {
-    mElevatorMotorA.setNeutralMode(NeutralMode.Brake);
-    mElevatorMotorB.setNeutralMode(NeutralMode.Brake);
+    mElevatorMotorA.setNeutralMode(NeutralMode.Coast);
+    mElevatorMotorB.setNeutralMode(NeutralMode.Coast);
 
     mElevatorMotorB.set(ControlMode.Follower, RobotMap.kElevatorMotorAId);
 }
@@ -48,7 +48,7 @@ public static void initDefaultSetup() {
   // Elevator OpenLoop
   public void OpenLoop(double xElevator) {
     mElevatorMotorA.set(xElevator);
-    // mElevatorMotorB.set(xElevator);s
+    // mElevatorMotorB.set(xElevator);
   }
 
   // public Elevator(WPI_TalonSRX ElevatorMotorA, WPI_TalonSRX ElevatorMotorB, SpeedControllerGroup ElevatorDrive) {

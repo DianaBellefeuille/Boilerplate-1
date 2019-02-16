@@ -1,44 +1,48 @@
-// // package frc.robot.subsystems;
+package frc.robot.subsystems;
 
-// // import frc.robot.RobotMap;
-// // import edu.wpi.first.wpilibj.command.Subsystem;
-// // import edu.wpi.first.wpilibj.DoubleSolenoid;
-// // import org.slf4j.Logger;
-// // import org.slf4j.LoggerFactory;
+import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-// // // Creates the elevator subsystem
-// // public class Panel extends Subsystem {
+// Creates the elevator subsystem
+public class Panel extends Subsystem {
 
-// //   public enum SystemState {
-// //     Autonomous,
-// //     OpenLoop,
-// //     Testing
-// //   }
+  public enum SystemState {
+    Autonomous,
+    OpenLoop,
+    Testing
+  }
 
-// //   private final DoubleSolenoid mPanelShifter;
+  private static DoubleSolenoid mPanelShifter = new DoubleSolenoid(RobotMap.kPCMId, RobotMap.kHighGearSolenoid , RobotMap.kLowGearSolenoid);
 
-// //   private boolean mPanelClosed;
+  private boolean mPanelClosed;
 
-// //   // Logger
-// //   private final Logger mLogger = LoggerFactory.getLogger(Panel.class);
+  // Logger
+  private final Logger mLogger = LoggerFactory.getLogger(Panel.class);
 
-// // /**
-// //  Shifts the panel intake to the opposite position (i.e, if currently open will close)
-// //  **/
-// // public void shiftPanelIntake(boolean wantsPanelClosed) {
-// //   if (wantsPanelClosed == true) {
-// //     mPanelShifter.set(DoubleSolenoid.Value.kForward);
-// //     mPanelClosed = true;
-// //   } else if (wantsPanelClosed == false) {
-// //     mPanelShifter.set(DoubleSolenoid.Value.kReverse);
-// //     mPanelClosed = false;
-// //   }
-// //   mLogger.info("Panel shifted");
-// //  }
+  public static void initDefaultSetup() {
+      mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+  }
 
-// //  public boolean isPanelClosed() {
-// //    return mPanelClosed;
-// //  }
+  /**
+   Shifts the panel intake to the opposite position (i.e, if currently open will close)
+   **/
+  public void shiftPanelIntake(boolean wantsPanelClosed) {
+    if (wantsPanelClosed == true) {
+      mPanelShifter.set(DoubleSolenoid.Value.kForward);
+      mPanelClosed = true;
+    } else if (wantsPanelClosed == false) {
+      mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+      mPanelClosed = false;
+    }
+    mLogger.info("Panel shifted");
+   }
+
+ public boolean isPanelClosed() {
+   return mPanelClosed;
+ }
 
 // //   public Panel(DoubleSolenoid PanelShifter) {
 // //     mPanelShifter = PanelShifter;
@@ -54,7 +58,7 @@
 // //     return new Panel(PanelShifter);
 // //   }
 
-//   @Override
-//   public void initDefaultCommand() {
-//   }
-// }
+  @Override
+  public void initDefaultCommand() {
+  }
+}
