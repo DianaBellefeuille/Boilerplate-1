@@ -22,7 +22,8 @@ public class WristJoystick extends Command {
   @Override
   protected void execute() {
     // Get the joystick inputs
-    double xWrist = OI.operatorJoystick.getY();
+    // double xWrist = OI.operatorJoystick.getY();
+    double xWrist = (OI.operatorJoystick.getRawAxis(5) * 0.5);
 
     if (xWrist < 0.05 && xWrist > -0.05) {
       xWrist = 0.0;

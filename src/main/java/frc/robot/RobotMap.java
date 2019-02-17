@@ -24,7 +24,7 @@ public class RobotMap {
   public static double kJoystickDeadband = 0.05;
 
   // Driver turning gain
-  public static double kDriverZJoystickGain= 0.7;
+ public static double kDriverZJoystickGain= -0.7;
 
   // Pneumatics port constants
   public static int kHighGearSolenoid = 0;

@@ -29,11 +29,11 @@ public class Cargo extends Subsystem {
     mLogger.info("Cargo subsystem created");
   }
 
-  public void CargoIntake() {
-      mCargoMotor.set(1.0);
+  public void CargoPodOutput() {
+      mCargoMotor.set(0.75);
   }
 
-  public void CargoOutput() {
+  public void CargoIntake() {
     mCargoMotor.set(-1.0);
   }
 
