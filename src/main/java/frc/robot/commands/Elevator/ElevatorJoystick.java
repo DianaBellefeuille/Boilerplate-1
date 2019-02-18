@@ -17,18 +17,10 @@ public class ElevatorJoystick extends Command {
   @Override
   protected void execute() {
     // Get the joystick inputs
-    double xElevator = -OI.operatorJoystick.getY();
+    double xElevator = -OI.operatorJoystick.getRawAxis(5);
 
     // if (xElevator < 0.05 && xElevator > -0.05) {
     //   xElevator = 0.0;
-    // }
-
-    // if (xElevator > 1.0) {
-    //   xElevator = 1.0;
-    //   mLogger.info("Elevator speed counted over 1.0");
-    // } else if (xElevator < -1.0) {
-    //   xElevator = -1.0;
-    //   mLogger.info("Elevator speed counted under -1.0");
     // }
 
     Robot.mElevator.OpenLoop(xElevator);

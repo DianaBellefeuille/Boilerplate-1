@@ -30,15 +30,15 @@ public class Wrist extends Subsystem {
     mWristMotor.setNeutralMode(NeutralMode.Brake);
   }
 
-  public void WristUp() {
-    mWristMotor.set(.5);
-    mLogger.info("UP");
-  }
+  // public void WristUp() {
+  //   mWristMotor.set(.5);
+  //   mLogger.info("UP");
+  // }
 
-  public void WristDown() {
-    mWristMotor.set(-.5);
-    mLogger.info("DOWN");
-  }
+  // public void WristDown() {
+  //   mWristMotor.set(-.5);
+  //   mLogger.info("DOWN");
+  // }
 
   public void WristStop() {
     mWristMotor.set(0.0);
@@ -48,18 +48,6 @@ public class Wrist extends Subsystem {
   public void OpenLoop(double xWrist) {
     mWristMotor.set(xWrist);
   }
-
-//   public Cargo(WPI_TalonSRX cargomotor) {
-  
-//     mCargoMotor = cargomotor;
-//     mCargoMotor.setNeutralMode(NeutralMode.Coast);
-//     mLogger.info("Cargo Manipulator Created");
-//   }
-
-//   public static Cargo create() {
-//     WPI_TalonSRX cargomotor  = new WPI_TalonSRX(RobotMap.kCargoMotorID);
-//     return new Cargo(cargomotor);
-//   }
 
   @Override
   public void initDefaultCommand() {
