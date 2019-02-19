@@ -9,6 +9,7 @@ import frc.robot.subsystems.Panel;
 import frc.robot.subsystems.Wrist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
   public static Drivetrain mDrivetrain = new Drivetrain();
