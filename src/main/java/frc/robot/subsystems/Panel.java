@@ -20,10 +20,11 @@ public class Panel extends Subsystem {
   private boolean mPanelClosed;
 
   // Logger
-  private final Logger mLogger = LoggerFactory.getLogger(Panel.class);
+  private static Logger mLogger = LoggerFactory.getLogger(Panel.class);
 
   public static void initDefaultSetup() {
       mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+      mLogger.info("Panel subsystem created");
   }
 
   /**

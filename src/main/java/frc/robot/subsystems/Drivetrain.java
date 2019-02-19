@@ -9,13 +9,13 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Creates the drivetrain subsystem
 public class Drivetrain extends Subsystem {
 
-  // private final Logger mLogger = LoggerFactory.getLogger(Drivetrain.class);
+  private static Logger mLogger = LoggerFactory.getLogger(Drivetrain.class);
 
   // Map the CIM motors to the TalonSRX's
   public static WPI_TalonSRX mLeftFollowerA  = new WPI_TalonSRX(RobotMap.kLeftFollerAId);
@@ -53,6 +53,8 @@ public class Drivetrain extends Subsystem {
 
     // Set the solenoids
     m_Shifter.set(DoubleSolenoid.Value.kReverse);
+
+    mLogger.info("Drivetrain subsystem created");
   }
 
   // Takes joystick inputs and runs through the drivetrain
@@ -66,6 +68,7 @@ public class Drivetrain extends Subsystem {
   } else {
     Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kForward);
   }
+  mLogger.info("Drivetrain shifted");
 }
 
   @Override

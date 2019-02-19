@@ -1,14 +1,10 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import frc.robot.commands.Wrist.WristJoystick;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,10 +20,12 @@ public class Wrist extends Subsystem {
   public static WPI_TalonSRX mWristMotor = new WPI_TalonSRX(RobotMap.kWristMotorID);
 
   // Logger
-  private final Logger mLogger = LoggerFactory.getLogger(Wrist.class);
+  private static Logger mLogger = LoggerFactory.getLogger(Wrist.class);
 
   public static void initDefaultSetup() {
     mWristMotor.setNeutralMode(NeutralMode.Brake);
+    mLogger.info("Wrist subsystem created");
+
   }
 
   // public void WristUp() {
@@ -42,7 +40,6 @@ public class Wrist extends Subsystem {
 
   public void WristStop() {
     mWristMotor.set(0.0);
-    mLogger.info("STOP");
   }
 
   public void OpenLoop(double xWrist) {
