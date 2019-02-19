@@ -15,7 +15,7 @@ public class CargoPodOutput extends Command {
 
   @Override
   protected void execute() {
-    Robot.mCargo.CargoPodOutput();
+    Robot.mCargo.CargoPodOutputFast();
 
   }
 

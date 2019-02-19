@@ -6,6 +6,7 @@ import frc.robot.commands.Drivetrain.Shift;
 import frc.robot.commands.Cargo.CargoPodOutput;
 import frc.robot.commands.Cargo.CargoPodStop;
 import frc.robot.commands.Cargo.CargoPodIntake;
+import frc.robot.commands.Cargo.CargoPodOuttakeSlow;
 
 
 // import frc.robot.commands.Wrist.WristDown;
@@ -32,11 +33,12 @@ public class OI {
 
   private Button mCargoIn = new JoystickButton(operatorJoystick, 1);
   private Button mCargoOut = new JoystickButton(operatorJoystick, 2);
+  private Button mCargoOuttakeSlow = new JoystickButton(operatorJoystick, 3);  
 
   // private Button mWristUp = new JoystickButton(operatorJoystick, 3);
   // private Button mWristDown = new JoystickButton(operatorJoystick, 4);
 
-  private Button mPanelShift = new JoystickButton(operatorJoystick, 5);
+  private Button mPanelShift = new JoystickButton(driverJoystick, 2);
 
   // climber
   // right bumper deploys climber
@@ -53,6 +55,9 @@ public class OI {
     mCargoOut.whenPressed(new CargoPodOutput());
     mCargoIn.whenReleased(new CargoPodStop());
     mCargoOut.whenReleased(new CargoPodStop());
+
+    mCargoOuttakeSlow.whenPressed(new CargoPodOuttakeSlow());
+    mCargoOuttakeSlow.whenReleased(new CargoPodStop());
 
     // mWristDown.whenPressed(new WristDown());
     // mWristUp.whenPressed(new WristUp());

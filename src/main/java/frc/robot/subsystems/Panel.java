@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // Creates the elevator subsystem
 public class Panel extends Subsystem {
 
@@ -20,10 +20,12 @@ public class Panel extends Subsystem {
   private boolean mPanelClosed;
 
   // Logger
-  private final Logger mLogger = LoggerFactory.getLogger(Panel.class);
+  private static Logger mLogger = LoggerFactory.getLogger(Panel.class);
 
   public static void initDefaultSetup() {
-      mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+    mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+    mLogger.info("Panel subsystem created");
+    SmartDashboard.putBoolean("Panel Intake actuated:", false); 
   }
 
   /**
@@ -33,9 +35,11 @@ public class Panel extends Subsystem {
     if (wantsPanelClosed == true) {
       mPanelShifter.set(DoubleSolenoid.Value.kForward);
       mPanelClosed = true;
+      SmartDashboard.putBoolean("Panel Intake actuated:", wantsPanelClosed);
     } else if (wantsPanelClosed == false) {
       mPanelShifter.set(DoubleSolenoid.Value.kReverse);
       mPanelClosed = false;
+      SmartDashboard.putBoolean("Panel Intake actuated:", wantsPanelClosed);    
     }
     mLogger.info("Panel shifted");
    }
