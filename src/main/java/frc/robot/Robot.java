@@ -27,7 +27,7 @@ public class Robot extends TimedRobot {
     Elevator.initDefaultSetup();
     Panel.initDefaultSetup();
     Wrist.initDefaultSetup();
-    mDrivetrain.SelfTest();
+    // mDrivetrain.SelfTest();
   }
 
   @Override
