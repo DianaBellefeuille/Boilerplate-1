@@ -11,11 +11,18 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.ctre.phoenix.ErrorCode;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 // Creates the drivetrain subsystem
 public class Drivetrain extends Subsystem {
 
   private static Logger mLogger = LoggerFactory.getLogger(Drivetrain.class);
+  private final Logger mSelftestLogger = LoggerFactory.getLogger("Drivetrain_Selftest");
+
+  private boolean mIsHighGear;
+  private boolean mIsBrakeMode;
 
   // Map the CIM motors to the TalonSRX's
   public static WPI_TalonSRX mLeftFollowerA  = new WPI_TalonSRX(RobotMap.kLeftFollerAId);
@@ -31,7 +38,7 @@ public class Drivetrain extends Subsystem {
   public static DifferentialDrive diffDrive = new DifferentialDrive(leftDrive, rightDrive);
 
   // Map the pneumatics for the drivetrain
-  public static DoubleSolenoid m_Shifter = new DoubleSolenoid(RobotMap.kPCMId, 2, 3);
+  public static DoubleSolenoid mShifter = new DoubleSolenoid(RobotMap.kPCMId, 2, 3);
 
  // This method will set up the default settings of the drivetrain motor controllers 
   public static void initDefaultSetup() {
@@ -52,7 +59,7 @@ public class Drivetrain extends Subsystem {
     diffDrive.setSafetyEnabled(false);
 
     // Set the solenoids
-    m_Shifter.set(DoubleSolenoid.Value.kReverse);
+    mShifter.set(DoubleSolenoid.Value.kReverse);
 
     mLogger.info("Drivetrain subsystem created");
   }
@@ -62,17 +69,164 @@ public class Drivetrain extends Subsystem {
     Drivetrain.diffDrive.arcadeDrive(xSpeed, zRotation);
   }
 
-  public void shiftDrivetrain() {
-    if (Drivetrain.m_Shifter.get() == DoubleSolenoid.Value.kForward) {
-      Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kReverse);
-  } else {
-    Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kForward);
+//   public void shiftDrivetrain() {
+//     if (Drivetrain.m_Shifter.get() == DoubleSolenoid.Value.kForward) {
+//       Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kReverse);
+//   } else {
+//     Drivetrain.m_Shifter.set(DoubleSolenoid.Value.kForward);
+//   }
+//   mLogger.info("Drivetrain shifted");
+// }
+
+public void setHighGear(boolean wantsHighGear) {
+  if (wantsHighGear == true) {
+    mShifter.set(Value.kForward);
+    mIsHighGear = true;
+  } else if (wantsHighGear == false) {
+    mShifter.set(Value.kReverse);
+    mIsHighGear = false;
   }
   mLogger.info("Drivetrain shifted");
-}
+ }
+
+ public boolean isHighGear() {
+   return mIsHighGear;
+ }
+
+ /**
+  Shifts the neutral mode of the drivetrain according to wantsBreakMode
+  @param wantsBreakMode a boolean input to determine brake/coast mode
+  */
+  public void setBrakeMode(boolean wantsBreakMode) {
+    if (wantsBreakMode == true) {
+      mLeftLeader.setNeutralMode(NeutralMode.Brake);
+      mLeftFollowerA.setNeutralMode(NeutralMode.Brake);
+      mLeftFollowerB.setNeutralMode(NeutralMode.Brake);
+      mRightLeader.setNeutralMode(NeutralMode.Brake);
+      mRightFollowerA.setNeutralMode(NeutralMode.Brake);
+      mRightFollowerB.setNeutralMode(NeutralMode.Brake);
+      mIsBrakeMode = true;
+      mLogger.info("Drivetrain set to brake mode");
+   } else if (wantsBreakMode == false) {
+      mLeftLeader.setNeutralMode(NeutralMode.Coast);
+      mLeftFollowerA.setNeutralMode(NeutralMode.Coast);
+      mLeftFollowerB.setNeutralMode(NeutralMode.Coast);
+      mRightLeader.setNeutralMode(NeutralMode.Coast);
+      mRightFollowerA.setNeutralMode(NeutralMode.Coast);
+      mRightFollowerB.setNeutralMode(NeutralMode.Coast);
+      mIsBrakeMode = false;
+      mLogger.info("Drivetrain set to coast mode");
+   }
+  }
+ 
+  public boolean isBrakeMode() {
+   return mIsBrakeMode;
+  }
+ 
 
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new DriveJoystick());
   }
+
+
+// Testing portion
+
+private void SelfTestMeasurement(WPI_TalonSRX talon, boolean polarity, boolean wantsHighGear) {
+  int sensorPosition, sensorVelocity;
+  double motorOutputPercent, motorOutputVoltage, endTime; 
+  ErrorCode setSensorPosition;
+  int talonId = talon.getDeviceID();
+  double setMotorOutputPercent = polarity ? 0.5 : -0.5;
+
+  setHighGear(wantsHighGear);
+  talon.set(setMotorOutputPercent);
+  setSensorPosition = talon.setSelectedSensorPosition(0);
+  if (setSensorPosition != ErrorCode.OK) {
+    mSelftestLogger.error("Could not set sensor position to 0, EC: [{}]", setSensorPosition);
+    //Flash red LEDs
+  } else {
+    endTime = Timer.getFPGATimestamp() + 2.0;
+    do {
+      sensorPosition = talon.getSelectedSensorPosition();
+      sensorVelocity = talon.getSelectedSensorVelocity();
+      motorOutputPercent = talon.getMotorOutputPercent();
+      motorOutputVoltage = talon.getMotorOutputVoltage();
+      mSelftestLogger.info("TalonSRX_{},{},{},{},{},{},{}", talonId, wantsHighGear, setMotorOutputPercent, motorOutputPercent, motorOutputVoltage, sensorPosition, sensorVelocity);
+    } while (Timer.getFPGATimestamp() < endTime);   
+  }
+  talon.set(0.0);
+}
+
+private void SelfTestMeasurement(WPI_TalonSRX talonFollow, boolean polarity, boolean wantsHighGear, WPI_TalonSRX talonLeader) {
+  int sensorPosition, sensorVelocity;
+  double motorOutputPercent, motorOutputVoltage, endTime; 
+  ErrorCode setSensorPosition;  
+  int talonID = talonFollow.getDeviceID();
+  double setMotorOutputPercent = polarity ? 0.5 : -0.5;
+
+  setHighGear(wantsHighGear);
+  talonFollow.set(setMotorOutputPercent);
+  setSensorPosition = talonLeader.setSelectedSensorPosition(0);
+  if (setSensorPosition != ErrorCode.OK) {
+    mSelftestLogger.error("Could not set sensor position to 0, EC: [{}]", setSensorPosition);
+    //Flash red LEDs
+  } else {
+    endTime = Timer.getFPGATimestamp() + 2.0;
+    do {
+      sensorPosition = talonLeader.getSelectedSensorPosition();
+      sensorVelocity = talonLeader.getSelectedSensorVelocity();
+      motorOutputPercent = talonFollow.getMotorOutputPercent();
+      motorOutputVoltage = talonFollow.getMotorOutputVoltage();
+      mSelftestLogger.info("VictorSPX_{},{},{},{},{},{},{}", talonID, wantsHighGear, setMotorOutputPercent, motorOutputPercent, motorOutputVoltage, sensorPosition, sensorVelocity);
+    } while (Timer.getFPGATimestamp() < endTime);   
+  }
+  talonFollow.set(0.0);
+}
+
+
+public void SelfTest() {
+  
+  // Set all motors to coast, percent output, and turn off the compressor
+  setBrakeMode(false);
+  mLeftLeader.set(ControlMode.PercentOutput, 0.0);
+  mLeftFollowerA.set(ControlMode.PercentOutput, 0.0);
+  mLeftFollowerB.set(ControlMode.PercentOutput, 0.0);
+  mRightLeader.set(ControlMode.PercentOutput, 0.0);
+  mRightFollowerA.set(ControlMode.PercentOutput, 0.0);
+  mRightFollowerB.set(ControlMode.PercentOutput, 0.0);
+
+  // For each motor, polarity, gear: drive at 50% power for 2 seconds and capture encoder/power data
+  mSelftestLogger.info("Motor ID, High Gear, Motor Output, Desired Motor Output Percent, Set Motor Output Percent, Motor Output Voltage, Sensor Position, Sensor Velocity");
+  SelfTestMeasurement(mLeftLeader, true, true);
+  SelfTestMeasurement(mRightLeader, true, true);
+  SelfTestMeasurement(mLeftFollowerA, true, true, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerA, true, true, mRightLeader);
+  SelfTestMeasurement(mLeftFollowerB, true, true, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerB, true, true, mRightLeader);
+  SelfTestMeasurement(mLeftLeader, false, true);
+  SelfTestMeasurement(mRightLeader, false, true);
+  SelfTestMeasurement(mLeftFollowerA, false, true, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerA, false, true, mRightLeader);
+  SelfTestMeasurement(mLeftFollowerB, false, true, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerB, false, true, mRightLeader);
+  SelfTestMeasurement(mLeftLeader, true, false);
+  SelfTestMeasurement(mRightLeader, true, false);
+  SelfTestMeasurement(mLeftFollowerA, true, false, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerA, true, false, mRightLeader);
+  SelfTestMeasurement(mLeftFollowerB, true, false, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerB, true, false, mRightLeader);
+  SelfTestMeasurement(mLeftLeader, false, false);
+  SelfTestMeasurement(mRightLeader, false, false);
+  SelfTestMeasurement(mLeftFollowerA, false, false, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerA, false, false, mRightLeader);
+  SelfTestMeasurement(mLeftFollowerB, false, false, mLeftLeader);
+  SelfTestMeasurement(mRightFollowerB, false, false, mRightLeader);
+
+  // Return back to follower mode and set to open loop mode
+  mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
+  mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
+  mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderId);
+  mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeaderId);
+ }
 }
