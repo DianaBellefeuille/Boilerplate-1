@@ -23,7 +23,7 @@ public class Panel extends Subsystem {
   private static Logger mLogger = LoggerFactory.getLogger(Panel.class);
 
   public static void initDefaultSetup() {
-    mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+    mPanelShifter.set(DoubleSolenoid.Value.kForward);
     mLogger.info("Panel subsystem created");
     SmartDashboard.putBoolean("Panel Intake actuated:", false); 
   }
