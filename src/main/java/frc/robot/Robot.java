@@ -29,9 +29,8 @@ public class Robot extends TimedRobot {
     Panel.initDefaultSetup();
     Wrist.initDefaultSetup();
     // mDrivetrain.SelfTest();
-
   }
-
+  
   @Override
   public void robotPeriodic() {
     Scheduler.getInstance().run();
