@@ -16,7 +16,7 @@ public class RobotMap {
 
   // Talon IDs for the manipulators
   public static int kCargoMotorID = 14;
-  public static int kWristMotorID = 13;
+  public static int kWristMotorID = 32; // Used to be Talon 13
 
   // Joysticks
   public static int kDriveJoystickId  = 0;

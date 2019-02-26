@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-// Creates the elevator subsystem
+// Creates the panel subsystem
 public class Panel extends Subsystem {
 
   public enum SystemState {
@@ -23,7 +23,7 @@ public class Panel extends Subsystem {
   private static Logger mLogger = LoggerFactory.getLogger(Panel.class);
 
   public static void initDefaultSetup() {
-    mPanelShifter.set(DoubleSolenoid.Value.kReverse);
+    mPanelShifter.set(DoubleSolenoid.Value.kForward);
     mLogger.info("Panel subsystem created");
     SmartDashboard.putBoolean("Panel Intake actuated:", false); 
   }
