@@ -3,9 +3,9 @@ package frc.robot.commands.Wrist;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class WristUp extends Command {
+public class WristToIntake extends Command {
 
-  public WristUp() {
+  public WristToIntake() {
     requires(Robot.mCargo);
   }
 

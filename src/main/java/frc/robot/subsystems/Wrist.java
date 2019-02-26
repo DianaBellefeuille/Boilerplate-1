@@ -50,4 +50,26 @@ public class Wrist extends Subsystem {
   public void initDefaultCommand() {
     setDefaultCommand(new WristJoystick());
   }
+
+  // if (mMaster.getControlMode() == ControlMode.MotionMagic) {
+  //   mPeriodicIO.active_trajectory_position = mMaster.getActiveTrajectoryPosition();
+
+  //   if (mPeriodicIO.active_trajectory_position < kReverseSoftLimit) {
+  //       DriverStation.reportError("Active trajectory past reverse soft limit!", false);
+  //   } else if (mPeriodicIO.active_trajectory_position > kForwardSoftLimit) {
+  //       DriverStation.reportError("Active trajectory past forward soft limit!", false);
+  //   }
+  //   final int newVel = mMaster.getActiveTrajectoryVelocity();
+
+  //   if (Util.epsilonEquals(newVel, Constants.kWristCruiseVelocity, 5) ||
+  //           Util.epsilonEquals(newVel, mPeriodicIO.active_trajectory_velocity, 5)) {
+  //       // Wrist is ~constant velocity.
+  //       mPeriodicIO.active_trajectory_acceleration_rad_per_s2 = 0.0;
+  //   } else {
+  //       // Wrist is accelerating.
+  //       mPeriodicIO.active_trajectory_acceleration_rad_per_s2 = Math.signum(newVel - mPeriodicIO
+  //               .active_trajectory_velocity) * RobotMap.kWristAcceleration * 20.0 * Math.PI /
+  //               4096;
+  //   }
+
 }

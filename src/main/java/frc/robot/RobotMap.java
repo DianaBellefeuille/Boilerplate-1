@@ -14,7 +14,7 @@ public class RobotMap {
   public static int kElevatorMotorAId = 22;
   public static int kElevatorMotorBId = 21;
 
-  // Talon IDs for the manipulators
+  // Talon IDs for motors on the carriage
   public static int kCargoMotorID = 14;
   public static int kWristMotorID = 32; // Used to be Talon 13
 
@@ -24,7 +24,7 @@ public class RobotMap {
   public static double kJoystickDeadband = 0.05;
 
   // Driver turning gain
- public static double kDriverZJoystickGain= -0.7;
+  public static double kDriverZJoystickGain= -0.7;
 
   // Pneumatics port constants
   public static int kHighGearSolenoid = 0;

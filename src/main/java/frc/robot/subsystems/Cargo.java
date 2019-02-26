@@ -30,15 +30,15 @@ public class Cargo extends Subsystem {
   }
 
   public void CargoPodOutputFast() {
-      mCargoMotor.set(0.75);
+      mCargoMotor.set(-0.75);
   }
 
   public void CargoPodOuttakeSlow() {
-    mCargoMotor.set(0.4);
+    mCargoMotor.set(-0.4);
 }
 
   public void CargoIntake() {
-    mCargoMotor.set(-1.0);
+    mCargoMotor.set(1.0);
   }
 
   public void CargoStop() {

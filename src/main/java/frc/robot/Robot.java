@@ -9,6 +9,7 @@ import frc.robot.subsystems.Panel;
 import frc.robot.subsystems.Wrist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import edu.wpi.first.cameraserver.CameraServer;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
@@ -29,7 +30,7 @@ public class Robot extends TimedRobot {
     Wrist.initDefaultSetup();
     // mDrivetrain.SelfTest();
   }
-
+  
   @Override
   public void robotPeriodic() {
     Scheduler.getInstance().run();
@@ -47,6 +48,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     mLogger.info("Teleop Start");
+    CameraServer.getInstance().startAutomaticCapture();
   }
   
 
