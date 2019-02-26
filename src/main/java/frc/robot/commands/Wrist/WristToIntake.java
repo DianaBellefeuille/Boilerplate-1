@@ -15,7 +15,7 @@ public class WristToIntake extends Command {
 
   @Override
   protected void execute() {
-    // Robot.mWrist.WristUp();
+    Robot.mWrist.WristClosedLoop();
   }
 
   @Override
